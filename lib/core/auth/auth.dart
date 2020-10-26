@@ -2,15 +2,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:rxdart/rxdart.dart';
 
-enum AuthState { PENDING, AUTHENTICATED, UNAUTHENTICATED }
+enum AuthState { AUTHENTICATED, UNAUTHENTICATED }
 
 class Auth {
-  static Stream<AuthState> authState$ = FirebaseAuth.instance
+  static Stream<AuthState> authStateChange$ = FirebaseAuth.instance
       .authStateChanges()
       .doOnData((event) {
     print('user found: ${event?.uid}');
   }).map((state) =>
           state != null ? AuthState.AUTHENTICATED : AuthState.UNAUTHENTICATED);
+
+  static bool get isAuthenticated {
+    return FirebaseAuth.instance.currentUser != null;
+  }
 
   static Future<UserCredential> signInWithGoogle() async {
     // Trigger the authentication flow

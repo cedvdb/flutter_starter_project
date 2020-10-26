@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:starter_project/core/auth/auth.dart';
 
@@ -10,13 +12,11 @@ class AuthGuard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: Auth.authState$,
+      stream: Auth.authStateChange$,
       builder: (context, snapshot) {
-        print('builder ${snapshot.data}');
-        if (snapshot.data == AuthState.AUTHENTICATED) {
-          return authenticated;
-        }
-        return unauthenticated;
+        // we dont check the stream itself because on hot reload
+        // the event will fire with null despite being connected
+        return Auth.isAuthenticated ? authenticated : unauthenticated;
       },
     );
   }

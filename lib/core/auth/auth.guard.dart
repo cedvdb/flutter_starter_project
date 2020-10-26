@@ -6,7 +6,7 @@ import 'package:starter_project/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 StreamBuilder authGuard = StreamBuilder(
-  stream: Auth.authState$,
+  stream: Auth.authStateChange$,
   builder: (context, snapshot) {
     switch (snapshot.data) {
       case AuthState.PENDING:
