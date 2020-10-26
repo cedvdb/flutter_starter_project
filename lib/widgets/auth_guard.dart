@@ -12,10 +12,11 @@ class AuthGuard extends StatelessWidget {
     return StreamBuilder(
       stream: Auth.authState$,
       builder: (context, snapshot) {
+        print('builder ${snapshot.data}');
         if (snapshot.data == AuthState.AUTHENTICATED) {
-          return this.authenticated;
+          return authenticated;
         }
-        return this.authenticated;
+        return unauthenticated;
       },
     );
   }

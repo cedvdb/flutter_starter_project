@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         future: Firebase.initializeApp(),
         child: AuthGuard(
           unauthenticated: SignInScreen(),
-          authenticated: SignInScreen(),
+          authenticated: MainScreen(),
         ),
       ),
     );

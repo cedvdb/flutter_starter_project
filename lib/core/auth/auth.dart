@@ -26,4 +26,8 @@ class Auth {
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
+
+  static Future<void> signOut() {
+    return FirebaseAuth.instance.signOut();
+  }
 }
