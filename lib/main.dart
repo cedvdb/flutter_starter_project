@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:starter_project/screens/main_screen.dart';
@@ -33,13 +32,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: kColorPrimary,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SafeArea(
-        child: AppLoader(
-          future: Firebase.initializeApp(),
-          child: AuthGuard(
-            unauthenticated: SignInScreen(),
-            authenticated: MainScreen(),
-          ),
+      home: AppLoader(
+        future: Firebase.initializeApp(),
+        child: AuthGuard(
+          unauthenticated: SignInScreen(),
+          authenticated: SignInScreen(),
         ),
       ),
     );
