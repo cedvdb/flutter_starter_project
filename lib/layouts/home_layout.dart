@@ -1,5 +1,7 @@
 import 'package:eureka_app/screens/create_restaurant_screen.dart';
+import 'package:eureka_app/screens/dashboard_screen.dart';
 import 'package:eureka_app/screens/tables_screen.dart';
+import 'package:eureka_app/widgets/gradient_container.dart';
 import 'package:eureka_app/widgets/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:eureka_app/theme/palette.dart';
@@ -41,41 +43,29 @@ class _HomeLayoutState extends State<HomeLayout> {
             Expanded(
               child: Container(
                 color: kColorBgBackground,
-                child: PageView(
-                  controller: _pageController,
-                  children: [
-                    CreateRestaurantPage(),
-                    TablesPage(),
-                  ],
+                child: Navigator(
+                  onGenerateRoute: (RouteSettings settings) {
+                    var a = Router();
+                    print(settings.name);
+                    switch (settings.name) {
+                      case '/':
+                        return MaterialPageRoute(
+                            builder: (_) => DashboardPage());
+                      case '/create-restaurent':
+                        return MaterialPageRoute(
+                            builder: (_) => CreateRestaurantPage());
+                      case '/tables':
+                        return MaterialPageRoute(builder: (_) => TablesPage());
+                      default:
+                        return MaterialPageRoute(builder: (_) => TablesPage());
+                    }
+                  },
                 ),
               ),
             )
             // CreateRestaurantPage(),
             // TablesPage()
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class GradientContainer extends StatelessWidget {
-  final Widget child;
-
-  const GradientContainer({this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: child,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            kColorBgGradient1,
-            kColorBgGradient2,
-          ],
-          begin: Alignment.bottomCenter,
-          end: Alignment.topCenter,
         ),
       ),
     );

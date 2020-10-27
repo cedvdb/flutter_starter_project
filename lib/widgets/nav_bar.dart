@@ -5,10 +5,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class NavBar extends StatelessWidget {
   final Function onTabPress;
   final tabs = const [
-    FontAwesomeIcons.plus,
+    {'icon': FontAwesomeIcons.tachometerAlt, 'route': '/dashboard'},
+    {'icon': FontAwesomeIcons.plus, 'route': '/create-restaurant'},
     // FontAwesomeIcons.tachometerAlt,
     // FontAwesomeIcons.clipboardList,
-    FontAwesomeIcons.qrcode,
+    {'icon': FontAwesomeIcons.qrcode, 'route': '/tables'},
     // FontAwesomeIcons.cartArrowDown,
     // FontAwesomeIcons.history,
     // FontAwesomeIcons.industry,
@@ -23,8 +24,9 @@ class NavBar extends StatelessWidget {
         children: [
           for (int i = 0; i < tabs.length; i++)
             NavButton(
-              icon: tabs[i],
-              onTap: () => onTabPress(i),
+              icon: tabs[i]['icon'],
+              onTap: () =>
+                  Navigator.of(context).pushReplacementNamed(tabs[i]['route']),
             )
         ],
       ),
