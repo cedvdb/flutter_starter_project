@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:starter_project/screens/error_screen.dart';
-import 'package:starter_project/screens/splash_screen.dart';
+import 'package:eureka_app/screens/error_screen.dart';
+import 'package:eureka_app/screens/splash_screen.dart';
 
 class AppLoader extends StatelessWidget {
   final Future future;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starter_project/theme/palette.dart';
+import 'package:eureka_app/theme/palette.dart';
 
 // text where the first letter is the accent color
 class AccentuatedText extends StatelessWidget {

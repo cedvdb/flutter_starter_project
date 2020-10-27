@@ -1,0 +1,101 @@
+{
+  "signIn": {
+    "Sign in with Google": "Inicia sesión con Google",
+    "Sign in with Facebook": "Inicia sesión con Facebook",
+    "Sign in with Phone": "Inicia sesión con Teléfono",
+    "Sign in with Email": "Iniciar sesión con correo electrónico"
+  },
+  "nav": {
+    "Create Restaurant": "Crear restaurante",
+    "Restaurant": "Restaurante",
+    "Tables": "Mesas",
+    "History": "Historia",
+    "Menu": "Menú",
+    "Sign out": "Desconectar",
+    "Orders": "Pedidos",
+    "Dashboard": "Tablero",
+    "Team": "Equipo"
+  },
+  "createRestaurant": {
+    "Create Restaurant": "Crear restaurante",
+    "Create your restaurant / bar": "Crear restaurante o bar",
+    "Name": "Nombre del restaurante",
+    "Menu Url": "URL del menú",
+    "Your menu website address": "La dirección del sitio web de tu menú",
+    "Creating restaurant": "Creando restaurante",
+    "SAVE": "ENVIAR"
+  },
+  "tables": {
+    "Table": "Mesa",
+    "Tables": "Mesas",
+    "Add table": "Agregar una mesa",
+    "Remove table": "Quitar una mesa",
+    "Download": "Descargar",
+    "Print": "Impresión",
+    "View link": "Ver enlace"
+  },
+  "editMenu": {
+    "Menu": "Menú",
+    "Add foods": "Agregar alimentos",
+    "Add drinks": "Agregar bebidas",
+    "Add menu item": "Agregar elemento de menú",
+    "Edit": "Editar",
+    "Change to drinks": "Cambiar a bebidas",
+    "Change to foods": "Cambiar a alimentos",
+    "Open": "Abierto",
+    "Collapse": "Colapso",
+    "Remove": "Eliminar"
+  },
+  "clientRedirect": {
+    "disclaimer": "Por favor, complete el siguiente formulario para ver el menú. Sus datos serán destruidos después de 14 días. Esto es voluntario, puede omitirlo.",
+    "Client Form": "Formulario de cliente",
+    "Firstname": "Primer nombre",
+    "Lastname": "Apellido",
+    "Email": "Email",
+    "Phone": "Número de teléfono",
+    "SKIP": "OMITIR",
+    "SUBMIT": "ENVIAR"
+  },
+  "confDlg": {
+    "Confirm": "Confirmar",
+    "Are you sure ?": "Estás seguro ?",
+    "Delete": "Eliminar",
+    "Cancel": "Cancelar"
+  },
+  "orders": {
+    "unverified": "Inconfirmado",
+    "verified": "Verificado",
+    "ready": "Listo",
+    "served": "Servido",
+    "paid": "Pagado"
+  },
+  "dashboard": {
+    "Articles": "Artículos",
+    "Monthly": "Por mes",
+    "Daily": "Por día",
+    "Hourly": "Por hora"
+  },
+  "team": {
+    "Invite": "Invitación"
+  },
+  "invite": {
+    "Invite Team member": "Invitar a un miembro del equipo",
+    "Email": "email",
+    "Invite": "Invitación",
+    "Invitation sent": "¡Invitación enviada!",
+    "Close": "Cerca",
+    "Invite Another": "Invitar a otro"
+  },
+  "acceptInvite": {
+    "Invitation Received": "Invitación recibida",
+    "txt1": "{{senderName}} te ha enviado una invitación para unirte a {{restaurantName}}",
+    "txt2": "¿Le gustaría aceptar y unirse a su equipo?",
+    "Yes": "Si",
+    "No": "No"
+  },
+  "restaurant": {
+    "Edit Picture": "Editar foto",
+    "Informations": "Información",
+    "Name": "Nombre"
+  }
+}

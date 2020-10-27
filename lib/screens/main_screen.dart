@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starter_project/core/auth/auth.dart';
+import 'package:eureka_app/core/auth/auth.dart';
 
 class MainScreen extends StatelessWidget {
   @override

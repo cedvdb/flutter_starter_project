@@ -1,4 +1,4 @@
-# starter_project
+# eureka_app
 
 A starter flutter project with common features I use.
 

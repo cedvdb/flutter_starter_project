@@ -1,0 +1,101 @@
+{
+  "signIn": {
+    "Sign in with Google": "Aanmelden met Google",
+    "Sign in with Facebook": "Aanmelden met Facebook",
+    "Sign in with Phone": "Aanmelden met Tel.",
+    "Sign in with Email": "Log in met e-mail"
+  },
+  "nav": {
+    "Create Restaurant": "Maak een restaurant",
+    "Restaurant": "Restaurant",
+    "Tables": "Tafels",
+    "History": "Historie",
+    "Menu": "Menu",
+    "Sign out": "Afmelden",
+    "Orders": "Bestellingen",
+    "Dashboard": "Dashboard",
+    "Team": "Team"
+  },
+  "createRestaurant": {
+    "Create Restaurant": "Maak een restaurant",
+    "Create your restaurant / bar": "Maak een restaurant / bar",
+    "Name": "Naam van het restaurant",
+    "Menu Url": "Menu Url",
+    "Your menu website address": "Het adres van uw menuwebsite",
+    "Creating restaurant": "Restaurant creëren",
+    "SAVE": "INDIENEN"
+  },
+  "tables": {
+    "Table": "Tafel",
+    "Tables": "Tafels",
+    "Add table": "Voeg een tafel toe",
+    "Remove table": "Verwijder een tafel",
+    "Download": "Downloaden",
+    "Print": "Afdrukken",
+    "View link": "Bekijk link"
+  },
+  "editMenu": {
+    "Menu": "menu",
+    "Add foods": "Voeg voedsel toe",
+    "Add drinks": "Voeg drankjes toe",
+    "Add menu item": "Menu-item toevoegen",
+    "Edit": "Bewerk",
+    "Change to drinks": "Verander naar drankjes",
+    "Change to foods": "Verander naar voedsel",
+    "Open": "Open",
+    "Collapse": "Ineenstorting",
+    "Remove": "Verwijderen"
+  },
+  "clientRedirect": {
+    "disclaimer": "Vul het onderstaande formulier in om het menu te zien. Uw gegevens worden na 14 dagen vernietigd. Dit is op vrijwillige basis, u kunt dit overslaan.",
+    "Client Form": "Klantformulier",
+    "Firstname": "Voornaam",
+    "Lastname": "Achternaam",
+    "Email": "Email",
+    "Phone": "Telefoon",
+    "SKIP": "OVERSPRINGEN",
+    "SUBMIT": "INDIENEN"
+  },
+  "confDlg": {
+    "Confirm": "Bevestigen",
+    "Are you sure ?": "Weet je het zeker ?",
+    "Delete": "Verwijderen",
+    "Cancel": "Annuleer"
+  },
+  "orders": {
+    "unverified": "Niet geverifieerd",
+    "verified": "Geverifieerd",
+    "ready": "Klaar",
+    "served": "Geserveerd",
+    "paid": "Betaald"
+  },
+  "dashboard": {
+    "Articles": "Lidwoord",
+    "Monthly": "Bij maand",
+    "Daily": "Bij dag",
+    "Hourly": "Per uur"
+  },
+  "team": {
+    "Invite": "Nodig uit"
+  },
+  "invite": {
+    "Invite Team member": "Nodig teamlid uit",
+    "Email": "E-mail",
+    "Invite": "Nodig uit",
+    "Invitation sent": "Uitnodiging verzonden!",
+    "Close": "Dichtbij",
+    "Invite Another": "Nodig een ander uit"
+  },
+  "acceptInvite": {
+    "Invitation Received": "Uitnodiging ontvangen",
+    "txt1": "{{senderName}} heeft je een uitnodiging gestuurd om lid te worden van {{restaurantName}}",
+    "txt2": "Wil je hun team accepteren en lid worden?",
+    "Yes": "Ja",
+    "No": "Nee"
+  },
+  "restaurant": {
+    "Edit Picture": "Afbeelding bewerken",
+    "Informations": "Informatie",
+    "Name": "Naam"
+  }
+}

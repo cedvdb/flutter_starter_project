@@ -1,20 +1,21 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:eureka_app/layouts/home_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:starter_project/core/auth/auth.dart';
-import 'package:starter_project/theme/spacing.dart';
-import 'package:starter_project/theme/themes.dart';
-import 'package:starter_project/widgets/accentuated_text.dart';
-import 'package:starter_project/widgets/logo.dart';
-import 'package:starter_project/widgets/outline_icon_button.dart';
+import 'package:eureka_app/core/auth/auth.dart';
+import 'package:eureka_app/theme/spacing.dart';
+import 'package:eureka_app/theme/themes.dart';
+import 'package:eureka_app/widgets/accentuated_text.dart';
+import 'package:eureka_app/widgets/logo.dart';
+import 'package:eureka_app/widgets/outline_icon_button.dart';
 
 class SignInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: kOutsideAppTheme,
-      child: Gradient(
+      data: kThemeSecondary,
+      child: GradientContainer(
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -46,28 +47,6 @@ class SignInScreen extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class Gradient extends StatelessWidget {
-  final Widget child;
-
-  Gradient({this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: child,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment
-              .bottomRight, // 10% of the width, so there are ten blinds.
-          colors: [Colors.lightGreen, Colors.lightBlue], // whitish to gray
-          tileMode: TileMode.repeated, // repeats the gradient over the canvas
         ),
       ),
     );

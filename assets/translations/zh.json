@@ -1,0 +1,101 @@
+{
+  "signIn": {
+    "Sign in with Google": "使用Google登录",
+    "Sign in with Facebook": "使用Facebook登录",
+    "Sign in with Phone": "用手机登录",
+    "Sign in with Email": "用电子邮件登录"
+  },
+  "nav": {
+    "Create Restaurant": "创建餐厅",
+    "Restaurant": "餐厅",
+    "Tables": "桌子",
+    "History": "历史",
+    "Menu": "菜单",
+    "Sign out": "登出",
+    "Orders": "命令",
+    "Dashboard": "仪表板",
+    "Team": "球队"
+  },
+  "createRestaurant": {
+    "Create Restaurant": "创建餐厅",
+    "Create your restaurant / bar": "创建您的餐厅或酒吧",
+    "Name": "名称",
+    "Menu Url": "菜单网址",
+    "Your menu website address": "您的菜单网址",
+    "Creating restaurant": "创建餐厅",
+    "SAVE": "提交"
+  },
+  "tables": {
+    "Table": "表",
+    "Tables": "桌子",
+    "Add table": "新增表格",
+    "Remove table": "删除表",
+    "Download": "下载",
+    "Print": "打印",
+    "View link": "查看连结"
+  },
+  "editMenu": {
+    "Menu": "菜单",
+    "Add foods": "添加食物",
+    "Add drinks": "加饮料",
+    "Add menu item": "添加菜单项",
+    "Edit": "编辑",
+    "Change to drinks": "换酒",
+    "Change to foods": "换食物",
+    "Open": "打开",
+    "Collapse": "坍方",
+    "Remove": "去掉"
+  },
+  "clientRedirect": {
+    "disclaimer": "请填写下面的表格以查看菜单。 14天后，您的数据将被销毁。这是自愿的，您可以跳过。",
+    "Client Form": "客户表格",
+    "Firstname": "名字",
+    "Lastname": "姓",
+    "Email": "电子邮件",
+    "Phone": "电话",
+    "SKIP": "跳跃",
+    "SUBMIT": "提交"
+  },
+  "confDlg": {
+    "Confirm": "确认",
+    "Are you sure ?": "你确定吗 ？",
+    "Delete": "删除",
+    "Cancel": "取消"
+  },
+  "orders": {
+    "unverified": "未验证",
+    "verified": "已验证",
+    "ready": "准备",
+    "served": "曾任职",
+    "paid": "已付"
+  },
+  "dashboard": {
+    "Articles": "文章",
+    "Monthly": "按月",
+    "Daily": "按天",
+    "Hourly": "按小时"
+  },
+  "team": {
+    "Invite": "邀请"
+  },
+  "invite": {
+    "Invite Team member": "邀请团队成员",
+    "Email": "电子邮件",
+    "Invite": "邀请",
+    "Invitation sent": "邀请已发送！",
+    "Close": "关",
+    "Invite Another": "邀请另一个"
+  },
+  "acceptInvite": {
+    "Invitation Received": "邀请已收到",
+    "txt1": "{{senderName}}向您发送了加入{{restaurantName}}的邀请",
+    "txt2": "您想接受并加入他们的团队吗？",
+    "Yes": "是",
+    "No": "没有"
+  },
+  "restaurant": {
+    "Edit Picture": "编辑图片",
+    "Informations": "信息",
+    "Name": "名称"
+  }
+}

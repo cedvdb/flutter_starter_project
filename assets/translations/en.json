@@ -1,3 +1,102 @@
 {
-  "hello": "hello world, this is translated"
+  "signIn": {
+    "Sign in with Google": "Sign in with Google",
+    "Sign in with Facebook": "Sign in with Facebook",
+    "Sign in Anonymously": "Sign in Anonymously",
+    "Sign in with Phone": "Sign in with Phone",
+    "Sign in with Email": "Sign in with Email"
+  },
+  "nav": {
+    "Create Restaurant": "Create Restaurant",
+    "Restaurant": "Restaurant",
+    "Tables": "Tables",
+    "History": "History",
+    "Sign out": "Sign out",
+    "Menu": "Menu",
+    "Orders": "Orders",
+    "Dashboard": "Dashboard",
+    "Team": "Team"
+  },
+  "createRestaurant": {
+    "Create Restaurant": "Create Restaurant",
+    "Create your restaurant / bar": "Create your restaurant / bar",
+    "Name": "Name",
+    "Menu Url": "Menu url",
+    "Your menu website address": "Your menu website address",
+    "Creating restaurant": "Creating restaurant",
+    "SAVE": "SAVE"
+  },
+  "tables": {
+    "Table": "Table",
+    "Tables": "Tables",
+    "Add table": "Add table",
+    "Remove table": "Remove table",
+    "Download": "Download",
+    "Print": "Print",
+    "View link": "View link"
+  },
+  "editMenu": {
+    "Menu": "Menu",
+    "Add foods": "Add foods",
+    "Add drinks": "Add drinks",
+    "Add menu item": "Add menu item",
+    "Edit": "Edit",
+    "Change to drinks": "Change to drinks",
+    "Change to foods": "Change to foods",
+    "Open": "Open",
+    "Collapse": "Collapse",
+    "Remove": "Remove"
+  },
+  "clientRedirect": {
+    "disclaimer": "Please, complete the form below to see the menu. Your data will be destroyed after 14 days. This is on a voluntary basis, you can skip.",
+    "Client Form": "Client Form",
+    "Firstname": "Firstname",
+    "Lastname": "Lastname",
+    "Email": "Email",
+    "Phone": "Phone",
+    "SKIP": "SKIP",
+    "SUBMIT": "SUBMIT"
+  },
+  "confDlg": {
+    "Confirm": "Confirm",
+    "Are you sure ?": "Are you sure ?",
+    "Delete": "Delete",
+    "Cancel": "Cancel"
+  },
+  "orders": {
+    "unverified": "unverified",
+    "verified": "verified",
+    "ready": "ready",
+    "served": "served",
+    "paid": "paid"
+  },
+  "dashboard": {
+    "Articles": "Articles",
+    "Monthly": "Monthly",
+    "Daily": "Daily",
+    "Hourly": "Hourly"
+  },
+  "team": {
+    "Invite": "Invite"
+  },
+  "invite": {
+    "Invite Team Member": "Invite Team member",
+    "Email": "Email",
+    "Invite": "Invite",
+    "Invitation sent": "Invitation sent!",
+    "Close": "Close",
+    "Invite Another": "Invite Another"
+  },
+  "acceptInvite": {
+    "Invitation Received": "Invitation Received",
+    "txt1": "{{ senderName }} has sent you an invitation to join {{ restaurantName }}",
+    "txt2": "Would you like to accept and join their team ?",
+    "Yes": "Yes",
+    "No": "No"
+  },
+  "restaurant": {
+    "Edit Picture": "Edit Picture",
+    "Informations": "Informations",
+    "Name": "Name"
+  }
 }

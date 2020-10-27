@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:starter_project/theme/palette.dart';
+import 'package:eureka_app/theme/palette.dart';
 
 class SplashScreen extends StatelessWidget {
   @override

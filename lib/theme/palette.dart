@@ -9,4 +9,5 @@ const Color kColorSuccess = Colors.lightGreen;
 
 const Color kColorBgGradient1 = kColorPrimary;
 const Color kColorBgGradient2 = kColorSecondary;
-const Color kColorBg = Color(0xFFf6f9f9);
+const Color kColorBgBackground = Color(0xFFf6f9f9);
+const Color kColorBgForeground = Colors.white;

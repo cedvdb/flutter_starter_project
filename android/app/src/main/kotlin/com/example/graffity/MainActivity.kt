@@ -1,4 +1,4 @@
-package com.example.starter_project
+package com.example.eureka_app
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,4 +1,4 @@
-name: starter_project
+name: eureka_app
 description: A flutter project already setup with common features I use and good practices. The features include google_fonts, fontawesome, translation
 
 # The following line prevents the package from being accidentally published to
@@ -20,7 +20,9 @@ dependencies:
   firebase_auth: "^0.18.1+2"
   font_awesome_flutter: ^8.10.0
   rxdart: ^0.24.1
+  flutter_form_builder: ^3.14.1
   flutter_spinkit: ^4.1.2+1
+  qr_flutter: ^3.2.0
 
 
 dev_dependencies:
