@@ -6,25 +6,8 @@ import 'package:eureka_app/widgets/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:eureka_app/theme/palette.dart';
 
-class HomeLayout extends StatefulWidget {
-  @override
-  _HomeLayoutState createState() => _HomeLayoutState();
-}
-
-class _HomeLayoutState extends State<HomeLayout> {
-  PageController _pageController;
-
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController();
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
+class HomeLayout extends StatelessWidget {
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
@@ -33,25 +16,23 @@ class _HomeLayoutState extends State<HomeLayout> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            NavBar(
-              onTabPress: (i) => _pageController.animateToPage(
-                i,
-                curve: Curves.easeInCubic,
-                duration: Duration(milliseconds: 400),
-              ),
-            ),
+            NavBar(navigatorKey: navigatorKey),
             Expanded(
               child: Container(
                 color: kColorBgBackground,
                 child: Navigator(
+                  key: navigatorKey,
+                  transitionDelegate: ,
                   onGenerateRoute: (RouteSettings settings) {
-                    var a = Router();
                     print(settings.name);
                     switch (settings.name) {
                       case '/':
+                      case '/dashboard':
                         return MaterialPageRoute(
-                            builder: (_) => DashboardPage());
-                      case '/create-restaurent':
+                            builder: (_) => DashboardPage(),
+
+                          );
+                      case '/create-restaurant':
                         return MaterialPageRoute(
                             builder: (_) => CreateRestaurantPage());
                       case '/tables':
