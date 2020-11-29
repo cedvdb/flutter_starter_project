@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const Color kColorPrimary = Colors.teal;
+final Color kColorPrimaryDark = Colors.teal.shade600;
 const Color kColorSecondary = Colors.lightGreen;
 const Color kColorAccent = Colors.amber;
 
