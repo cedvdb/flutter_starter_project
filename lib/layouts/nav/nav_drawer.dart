@@ -1,6 +1,8 @@
+import 'package:eureka_app/widgets/accentuated_text.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'nav_list.dart';
-import 'package:eureka_app/widgets/gradient_container.dart';
+import 'package:eureka_app/theme/spacing.dart';
 import 'package:eureka_app/widgets/logo.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -13,8 +15,22 @@ class NavDrawer extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 200,
-          child: Logo(),
+          margin: EdgeInsets.only(top: kSpacingM, bottom: kSpacingM),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                child: Logo(size: 30),
+                width: 60,
+              ),
+              AccentuatedText(
+                text: "Eureka !",
+                style: GoogleFonts.indieFlower(
+                  textStyle: TextStyle(fontSize: 40),
+                ),
+              ),
+            ],
+          ),
         ),
         NavList(
           navigatorKey: navigatorKey,
