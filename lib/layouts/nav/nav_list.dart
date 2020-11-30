@@ -1,7 +1,7 @@
 import 'package:eureka_app/theme/themes.dart';
 import 'package:flutter/material.dart';
 
-import 'nav_tabs.dart';
+import 'nav_list_elements.dart';
 
 class NavList extends StatelessWidget {
   final GlobalKey<NavigatorState> navigatorKey;

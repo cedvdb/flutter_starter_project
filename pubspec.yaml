@@ -25,6 +25,7 @@ dependencies:
   qr_flutter: ^3.2.0
   flutter_statusbarcolor: ^0.2.3
   fl_chart: ^0.12.0
+  flutter_inner_drawer: ^0.5.7+2
 
 
 dev_dependencies:

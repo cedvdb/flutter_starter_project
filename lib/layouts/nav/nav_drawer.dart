@@ -10,20 +10,17 @@ class NavDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: GradientContainer(
-        child: Column(
-          children: [
-            DrawerHeader(
-              child: Logo(),
-            ),
-            NavList(
-              navigatorKey: navigatorKey,
-              displayText: true,
-            ),
-          ],
+    return Column(
+      children: [
+        Container(
+          height: 200,
+          child: Logo(),
         ),
-      ),
+        NavList(
+          navigatorKey: navigatorKey,
+          displayText: true,
+        ),
+      ],
     );
   }
 }

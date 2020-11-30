@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_inner_drawer/inner_drawer.dart';
 import 'nav/navigator_container.dart';
 import 'nav/nav_drawer.dart';
+import 'package:eureka_app/widgets/gradient_container.dart';
+import 'nav/nav_list.dart';
+import 'nav/nav_slider.dart';
 
 class HomeLayout extends StatelessWidget {
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<InnerDrawerState> _innerDrawerKey =
+      GlobalKey<InnerDrawerState>();
 
   @override
   Widget build(BuildContext context) {
@@ -60,12 +66,17 @@ class HomeLayout extends StatelessWidget {
   }
 
   _buildMobileLayout() {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Eureka"),
-        ),
-        drawer: NavDrawer(navigatorKey: navigatorKey),
-        body: NavigatorContainer(navigatorKey: navigatorKey));
+    return NavSlider(
+      drawer: NavDrawer(
+        navigatorKey: _navigatorKey,
+      ),
+      appBar: Container(
+        child: Text("appbar"),
+      ),
+      body: Container(
+        child: Text("child"),
+      ),
+    );
   }
 
   _buildTabletLayout() {
