@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inner_drawer/inner_drawer.dart';
-import 'nav/navigator_container.dart';
+
+import 'app_bar_eureka.dart';
 import 'nav/nav_drawer.dart';
-import 'package:eureka_app/widgets/gradient_container.dart';
-import 'nav/nav_list.dart';
 import 'nav/nav_slider.dart';
+import 'nav/navigator_container.dart';
+import 'package:logger/logger.dart';
 
 class HomeLayout extends StatelessWidget {
-  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
-  final GlobalKey<InnerDrawerState> _innerDrawerKey =
-      GlobalKey<InnerDrawerState>();
-
   @override
   Widget build(BuildContext context) {
     // The equivalent of the "smallestWidth" qualifier on Android.
@@ -67,15 +63,11 @@ class HomeLayout extends StatelessWidget {
 
   _buildMobileLayout() {
     return NavSlider(
-      drawer: NavDrawer(
-        navigatorKey: _navigatorKey,
+      drawer: NavDrawer(),
+      appBar: AppBarEureka(
+        onMenuTap: () => NavSlider.toggle(),
       ),
-      appBar: Container(
-        child: Text("appbar"),
-      ),
-      body: Container(
-        child: Text("child"),
-      ),
+      body: NavigatorContainer(),
     );
   }
 

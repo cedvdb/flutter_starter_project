@@ -11,6 +11,6 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NavList(navigatorKey: this.navigatorKey);
+    return NavList();
   }
 }

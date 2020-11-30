@@ -1,13 +1,12 @@
 import 'package:eureka_app/theme/themes.dart';
 import 'package:flutter/material.dart';
-
+import 'navigator_container.dart';
 import 'nav_list_elements.dart';
 
 class NavList extends StatelessWidget {
-  final GlobalKey<NavigatorState> navigatorKey;
   final bool displayText;
 
-  const NavList({@required this.navigatorKey, this.displayText = false});
+  const NavList({this.displayText = false});
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +17,8 @@ class NavList extends StatelessWidget {
             NavButton(
               tab: tabs[i],
               hasText: displayText,
-              onTap: () =>
-                  navigatorKey.currentState.pushReplacementNamed(tabs[i].route),
+              onTap: () => NavigatorContainer.navigatorKey.currentState
+                  .pushReplacementNamed(tabs[i].route),
             )
         ],
       ),

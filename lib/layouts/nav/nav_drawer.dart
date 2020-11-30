@@ -6,9 +6,7 @@ import 'package:eureka_app/theme/spacing.dart';
 import 'package:eureka_app/widgets/logo.dart';
 
 class NavDrawer extends StatelessWidget {
-  final GlobalKey<NavigatorState> navigatorKey;
-
-  NavDrawer({@required this.navigatorKey});
+  NavDrawer();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +31,6 @@ class NavDrawer extends StatelessWidget {
           ),
         ),
         NavList(
-          navigatorKey: navigatorKey,
           displayText: true,
         ),
       ],

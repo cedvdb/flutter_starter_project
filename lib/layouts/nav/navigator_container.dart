@@ -5,9 +5,9 @@ import 'package:eureka_app/theme/palette.dart';
 import 'package:flutter/material.dart';
 
 class NavigatorContainer extends StatelessWidget {
-  final GlobalKey<NavigatorState> navigatorKey;
+  static GlobalKey<NavigatorState> navigatorKey;
 
-  NavigatorContainer({this.navigatorKey});
+  NavigatorContainer();
 
   @override
   Widget build(BuildContext context) {
