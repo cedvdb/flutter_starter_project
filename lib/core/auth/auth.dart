@@ -5,15 +5,14 @@ import 'package:rxdart/rxdart.dart';
 enum AuthState { AUTHENTICATED, UNAUTHENTICATED }
 
 class Auth {
-  static Stream<AuthState> authStateChange$ = FirebaseAuth.instance
-      .authStateChanges()
-      .doOnData((event) {
-    print('user found: ${event?.uid}');
-  }).map((state) =>
-          state != null ? AuthState.AUTHENTICATED : AuthState.UNAUTHENTICATED);
+  static FirebaseAuth _authFire = FirebaseAuth.instance;
+  static Stream<User> user$ =
+      _authFire.authStateChanges().startWith(_authFire.currentUser);
+  static Stream<AuthState> authStateChange$ = user$.map((state) =>
+      state != null ? AuthState.AUTHENTICATED : AuthState.UNAUTHENTICATED);
 
   static bool get isAuthenticated {
-    return FirebaseAuth.instance.currentUser != null;
+    return _authFire.currentUser != null;
   }
 
   static Future<UserCredential> signInWithGoogle() async {
@@ -28,10 +27,10 @@ class Auth {
       idToken: googleAuth.idToken,
     );
     // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+    return await _authFire.signInWithCredential(credential);
   }
 
   static Future<void> signOut() {
-    return FirebaseAuth.instance.signOut();
+    return _authFire.signOut();
   }
 }

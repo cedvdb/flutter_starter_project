@@ -1,58 +1,44 @@
+import 'package:eureka_app/core/auth/auth.dart';
 import 'package:eureka_app/theme/themes.dart';
 import 'package:flutter/material.dart';
 import 'navigator_container.dart';
 import 'nav_list_elements.dart';
+import 'nav_item.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NavList extends StatelessWidget {
   final bool displayText;
 
-  const NavList({this.displayText = false});
+  const NavList({this.displayText = true});
 
   @override
   Widget build(BuildContext context) {
     return SecondaryTheme(
-      child: Column(
-        children: [
-          for (int i = 0; i < tabs.length; i++)
-            NavButton(
-              tab: tabs[i],
-              hasText: displayText,
-              onTap: () => NavigatorContainer.navigatorKey.currentState
-                  .pushReplacementNamed(tabs[i].route),
-            )
-        ],
-      ),
-    );
-  }
-}
-
-class NavButton extends StatelessWidget {
-  final TabInfo tab;
-  final bool hasText;
-  final Function onTap;
-
-  const NavButton({
-    this.tab,
-    this.hasText,
-    this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        child: Row(
+      child: Expanded(
+        child: Column(
           children: [
-            Container(
-              height: 60,
-              width: 60,
-              child: Icon(tab.icon),
+            for (int i = 0; i < tabs.length; i++)
+              NavItem(
+                icon: Icon(tabs[i].icon),
+                text: displayText ? Text(tabs[i].title) : null,
+                onTap: () => NavigatorContainer.navigatorKey.currentState
+                    .pushReplacementNamed(tabs[i].route),
+              ),
+            Spacer(),
+            NavItem(
+              icon: Icon(FontAwesomeIcons.signOutAlt),
+              text: Text("Logout"),
+              onTap: () => Auth.signOut(),
             ),
-            if (hasText) Text(tab.title)
+
+            // NavButton(
+            //   tab: tabs[i],
+            //   hasText: displayText,
+            //   onTap: () => NavigatorContainer.navigatorKey.currentState
+            //       .pushReplacementNamed(tabs[i].route),
+            // ),
           ],
         ),
-        onTap: onTap,
       ),
     );
   }

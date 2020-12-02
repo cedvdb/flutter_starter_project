@@ -1,10 +1,6 @@
 import 'package:eureka_app/widgets/gradient_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inner_drawer/inner_drawer.dart';
-import 'package:eureka_app/theme/palette.dart';
-import 'package:eureka_app/widgets/accentuated_text.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class NavSlider extends StatelessWidget {
   static final GlobalKey<InnerDrawerState> _innerDrawerKey =

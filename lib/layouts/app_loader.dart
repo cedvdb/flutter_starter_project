@@ -14,6 +14,7 @@ class AppLoader extends StatelessWidget {
       future: future,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
+          print(snapshot.error);
           return ErrorScreen();
         }
         if (snapshot.connectionState == ConnectionState.done) {

@@ -4,7 +4,6 @@ import 'app_bar_eureka.dart';
 import 'nav/nav_drawer.dart';
 import 'nav/nav_slider.dart';
 import 'nav/navigator_container.dart';
-import 'package:logger/logger.dart';
 
 class HomeLayout extends StatelessWidget {
   @override
@@ -72,8 +71,9 @@ class HomeLayout extends StatelessWidget {
   }
 
   _buildTabletLayout() {
-    return Scaffold(
-      body: Container(),
-    );
+    return _buildMobileLayout();
+    // return Row(
+    //   children: [NavBar(), NavigatorContainer()],
+    // );
   }
 }

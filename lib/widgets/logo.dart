@@ -12,6 +12,8 @@ class Logo extends StatelessWidget {
       height: size,
       child: Image.asset(
         'assets/icons/logo.png',
+        width: size,
+        height: size,
       ),
     );
   }
