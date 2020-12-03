@@ -9,9 +9,12 @@ import 'package:eureka_app/layouts/app_loader.dart';
 import 'package:eureka_app/layouts/auth_guard.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:get_it/get_it.dart';
+import 'main.mapper.g.dart' show initializeJsonMapper;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  initializeJsonMapper();
+
   Future preloadPromise = Firebase.initializeApp().then((value) {
     print("inside promise =================");
     setupInjectors();

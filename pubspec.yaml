@@ -14,11 +14,12 @@ dependencies:
   flutter:
     sdk: flutter
   cloud_firestore: ^0.14.3+1
+  dart_json_mapper: ^1.7.2
   easy_localization: ^2.3.3
   firebase_auth: 0.18.3+1
   firebase_core: 0.5.2+1
   fl_chart: ^0.12.0
-  flutter_form_builder: ^3.14.1
+  flutter_form_builder: ^4.0.2
   flutter_inner_drawer: ^0.5.7+2
   flutter_spinkit: ^4.1.2+1
   flutter_statusbarcolor: ^0.2.3
@@ -26,16 +27,13 @@ dependencies:
   get_it: ^5.0.1
   google_fonts: ^1.1.1
   google_sign_in: ^4.5.6
-  json_annotation: ^3.1.1
   logger: ^0.9.4
   qr_flutter: ^3.2.0
   rxdart: ^0.24.1
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  json_serializable: ^3.5.0
   build_runner: ^1.10.6
 
 

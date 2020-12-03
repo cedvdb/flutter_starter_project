@@ -59,17 +59,17 @@ class _RestaurantForm extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       child: Column(
         children: <Widget>[
-          FormBuilderTextField(
-            attribute: 'name',
-            decoration: InputDecoration(
-              labelText: tr('createRestaurant.Name'),
-              // border: OutlineInputBorder(),
-            ),
-            validators: [
-              FormBuilderValidators.required(
-                  errorText: 'name must not be empty')
-            ],
-          )
+          // FormBuilderTextField(
+          //   attribute: 'name',
+          //   decoration: InputDecoration(
+          //     labelText: tr('createRestaurant.Name'),
+          //     // border: OutlineInputBorder(),
+          //   ),
+          //   validators: [
+          //     FormBuilderValidators.required(
+          //         errorText: 'name must not be empty')
+          //   ],
+          // )
         ],
       ),
     );

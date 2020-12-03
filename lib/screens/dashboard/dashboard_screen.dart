@@ -13,23 +13,23 @@ class DashboardPage extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Card(
-            child: StreamBuilder<DocumentSnapshot>(
-              stream: userAPI.user$,
-              builder: (BuildContext context,
-                  AsyncSnapshot<DocumentSnapshot> snapshot) {
-                if (snapshot.hasError) {
-                  return Text('Something went wrong');
-                }
+          // Card(
+          //   child: StreamBuilder<DocumentSnapshot>(
+          //     stream: userAPI.user$,
+          //     builder: (BuildContext context,
+          //         AsyncSnapshot<DocumentSnapshot> snapshot) {
+          //       if (snapshot.hasError) {
+          //         return Text('Something went wrong');
+          //       }
 
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Text("Loading");
-                }
+          //       if (snapshot.connectionState == ConnectionState.waiting) {
+          //         return Text("Loading");
+          //       }
 
-                return Text(snapshot.data.id);
-              },
-            ),
-          ),
+          //       return Text(snapshot.data.id);
+          //     },
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(

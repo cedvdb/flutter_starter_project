@@ -1,4 +1,3 @@
-// typedef Role: Map<String, Role>;
 class UserRole {
   final Role role;
   final String restaurant;

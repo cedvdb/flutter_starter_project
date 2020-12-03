@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:eureka_app/core/api/user_api.dart';
 import 'package:eureka_app/core/models/restaurant.dart';
 import 'package:eureka_app/core/models/role.dart';
 import 'package:eureka_app/core/models/user.dart';
 
+import '../logger.dart';
 import '_collections.dart';
 import '_fs.dart';
 import 'roles_api.dart';
@@ -33,7 +35,10 @@ class RestaurantAPI {
           whereIn: roles.map((role) => role.restaurant).toList(),
         )
         .snapshots()
-        .map((snap) => snap.docs.map((doc) => Restaurant.fromMap(doc.data())))
+        .map(
+          (snap) => snap.docs
+              .map((doc) => JsonMapper.deserialize<Restaurant>(doc.data())),
+        )
         .shareReplay(maxSize: 1);
   }
 
@@ -46,23 +51,21 @@ class RestaurantAPI {
     });
   }
 
-  createRestaurant(Restaurant restaurant) async {
+  Future<DocumentReference> createRestaurant(Restaurant restaurant) async {
     try {
-      restaurant.createdBy = _userAPI.user$.values.first.id; 
-      final map = restaurant.toMap();
+      restaurant.createdBy = _userAPI.user$.values.first.id;
+      final map = JsonMapper.serialize(restaurant);
       // adding created at in map because it's not the same type
       map['createdAt'] = FieldValue.serverTimestamp();
-      
+
       final added = await fs.collection(Col.restaurants).add(map);
-      await this.userSrv.update({ restaurantSelected: added.id });
+      await _userAPI.update(User(restaurantSelected: added.id));
       // wait for selected restaurant
-      await this.selectedRestaurant$.pipe(
-        filter(r => r.id === added.id),
-        take(1)
-      ).toPromise();
+      await selectedRestaurant$.where((r) => r.id == added.id).first;
       return added;
     } catch (e) {
-      console.error(e);
+      //  TODO add snackbar
+      log.e(e);
     }
   }
 
