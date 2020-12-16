@@ -1,9 +1,10 @@
-import 'package:get_it/get_it.dart';
-import 'user_api.dart';
-import 'package:rxdart/rxdart.dart';
-import '_fs.dart';
-import '_collections.dart';
 import 'package:eureka_app/core/models/role.dart';
+import 'package:get_it/get_it.dart';
+import 'package:rxdart/rxdart.dart';
+
+import '_collections.dart';
+import '_fs.dart';
+import 'user_api.dart';
 
 class RolesAPI {
   UserAPI _userAPI = GetIt.I.get<UserAPI>();
@@ -12,18 +13,22 @@ class RolesAPI {
   RolesAPI() {
     userRoles$ = _userAPI.user$
         .map((user) => user.id)
-        .switchMap((userId) => _getUserRoles(userId));
+        .switchMap((userId) => _getUserRoles(userId))
+        .shareReplay(maxSize: 1);
   }
 
-  ReplayStream<List<UserRole>> _getUserRoles(String userId) {
+  Stream<List<UserRole>> _getUserRoles(String userId) {
+    final List<String> roles = [Role.owner, Role.manager, Role.employee];
+
     return fs
         .collection(Col.roles)
-        .where(userId, whereIn: Role.values)
+        .where('$userId.role', whereIn: roles)
         .snapshots()
-        .map((snap) => snap.docs.map((doc) => UserRole(
-              doc.data()[userId],
-              doc.id,
-            )))
-        .shareReplay(maxSize: 1);
+        .map((snap) => snap.docs
+            .map((doc) => UserRole(
+                  role: doc.data()[userId]['role'],
+                  restaurant: doc.id,
+                ))
+            .toList());
   }
 }

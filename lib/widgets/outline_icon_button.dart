@@ -6,8 +6,12 @@ class OutlineIconButton extends StatelessWidget {
   final Function onPress;
   final Color accentColor;
 
-  const OutlineIconButton(
-      {this.text, this.icon, this.onPress, this.accentColor});
+  const OutlineIconButton({
+    this.text,
+    this.icon,
+    this.onPress,
+    this.accentColor,
+  });
 
   @override
   Widget build(BuildContext context) {

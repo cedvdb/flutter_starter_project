@@ -19,7 +19,8 @@ class UserAPI {
         .collection(Col.users)
         .doc(authUser.uid)
         .snapshots()
-        .map((snap) => JsonMapper.deserialize<User>(snap.data()));
+        .map((snap) => JsonMapper.deserialize<User>(snap.data()))
+        .doOnData((user) => print('user restaurant selected ' + user.restaurantSelected));
   }).shareReplay(maxSize: 1);
 
   update(User user) {

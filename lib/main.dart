@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:eureka_app/core/api/restaurant_api.dart';
 import 'package:eureka_app/core/api/user_api.dart';
 import 'package:eureka_app/layouts/home_layout.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,7 +9,9 @@ import 'package:eureka_app/theme/palette.dart';
 import 'package:eureka_app/layouts/app_loader.dart';
 import 'package:eureka_app/layouts/auth_guard.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
+import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
+import 'core/api/roles_api.dart';
 import 'main.mapper.g.dart' show initializeJsonMapper;
 
 void main() {
@@ -19,6 +22,7 @@ void main() {
     print("inside promise =================");
     setupInjectors();
   });
+
   runApp(
     EasyLocalization(
       supportedLocales: [Locale('en'), Locale('fr')],
@@ -30,6 +34,8 @@ void main() {
 
 void setupInjectors() {
   GetIt.I.registerSingleton<UserAPI>(UserAPI());
+  GetIt.I.registerSingleton<RolesAPI>(RolesAPI());
+  GetIt.I.registerSingleton<RestaurantAPI>(RestaurantAPI());
 }
 
 class MyApp extends StatelessWidget {
@@ -42,7 +48,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     FlutterStatusbarcolor.setStatusBarColor(kColorPrimaryDark);
     FlutterStatusbarcolor.setStatusBarWhiteForeground(true);
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Eureka',
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,

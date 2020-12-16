@@ -3,10 +3,9 @@ import 'package:eureka_app/screens/dashboard/dashboard_screen.dart';
 import 'package:eureka_app/screens/tables_screen.dart';
 import 'package:eureka_app/theme/palette.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class NavigatorContainer extends StatelessWidget {
-  static GlobalKey<NavigatorState> navigatorKey;
-
   NavigatorContainer();
 
   @override
@@ -14,7 +13,7 @@ class NavigatorContainer extends StatelessWidget {
     return Container(
       color: kColorBgBackground,
       child: Navigator(
-        key: navigatorKey,
+        key: Get.nestedKey(1),
         onGenerateRoute: (RouteSettings settings) {
           print(settings.name);
           switch (settings.name) {

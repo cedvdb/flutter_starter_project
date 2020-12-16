@@ -1,13 +1,14 @@
 import 'package:eureka_app/core/auth/auth.dart';
 import 'package:eureka_app/theme/themes.dart';
 import 'package:flutter/material.dart';
-import 'navigator_container.dart';
-import 'nav_list_elements.dart';
-import 'nav_item.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'page_service.dart';
+import 'nav_item.dart';
+import 'tab_info.dart';
 
 class NavList extends StatelessWidget {
   final bool displayText;
+  final List<TabInfo> tabs = PageService.tabs;
 
   const NavList({this.displayText = true});
 
@@ -21,8 +22,7 @@ class NavList extends StatelessWidget {
               NavItem(
                 icon: Icon(tabs[i].icon),
                 text: displayText ? Text(tabs[i].title) : null,
-                onTap: () => NavigatorContainer.navigatorKey.currentState
-                    .pushReplacementNamed(tabs[i].route),
+                onTap: () => PageService.goTo(tabs[i].page),
               ),
             Spacer(),
             NavItem(
@@ -30,13 +30,6 @@ class NavList extends StatelessWidget {
               text: Text("Logout"),
               onTap: () => Auth.signOut(),
             ),
-
-            // NavButton(
-            //   tab: tabs[i],
-            //   hasText: displayText,
-            //   onTap: () => NavigatorContainer.navigatorKey.currentState
-            //       .pushReplacementNamed(tabs[i].route),
-            // ),
           ],
         ),
       ),

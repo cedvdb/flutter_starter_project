@@ -1,8 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class UserRole {
-  final Role role;
+  final String role;
   final String restaurant;
 
-  UserRole(this.role, this.restaurant);
+  UserRole({this.role, this.restaurant});
 }
 
-enum Role { owner, manager, employee }
+class Role {
+  static String owner = 'owner';
+  static String manager = 'manager';
+  static String employee = 'employee';
+}

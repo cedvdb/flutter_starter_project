@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'app_bar_eureka.dart';
 import 'nav/nav_drawer.dart';
 import 'nav/nav_slider.dart';
-import 'nav/navigator_container.dart';
+import 'nav/page_service.dart';
 
 class HomeLayout extends StatelessWidget {
   @override
@@ -66,7 +66,10 @@ class HomeLayout extends StatelessWidget {
       appBar: AppBarEureka(
         onMenuTap: () => NavSlider.toggle(),
       ),
-      body: NavigatorContainer(),
+      body: PageView(
+        controller: PageService.controller,
+        children: [PageService.tabs.map((e) => e.)],
+      ),
     );
   }
 

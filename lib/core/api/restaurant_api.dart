@@ -21,13 +21,21 @@ class RestaurantAPI {
   ReplayStream<Restaurant> selectedRestaurant$;
 
   RestaurantAPI() {
-    restaurants$ =
-        _rolesAPI.userRoles$.switchMap((roles) => _getUserRestaurants(roles));
-    hasRestaurant$ = _rolesAPI.userRoles$.map((roles) => roles.length > 0);
-    selectedRestaurant$ = _getSelectedRestaurant();
+    restaurants$ = _rolesAPI.userRoles$
+        .switchMap((roles) => _getUserRestaurants(roles))
+        .doOnData((restaurants) {
+          print("restaurants (${restaurants.length})");
+        })
+        .doOnError((err) => print(err.toString()))
+        .shareReplay(maxSize: 1);
+    hasRestaurant$ = _rolesAPI.userRoles$
+        .map((roles) => roles.length > 0)
+        .shareReplay(maxSize: 1);
+    selectedRestaurant$ = _getSelectedRestaurant().shareReplay(maxSize: 1);
   }
 
-  ReplayStream<List<Restaurant>> _getUserRestaurants(List<UserRole> roles) {
+  Stream<List<Restaurant>> _getUserRestaurants(List<UserRole> roles) {
+    print('getting restaurants');
     return fs
         .collection(Col.restaurants)
         .where(
@@ -37,9 +45,9 @@ class RestaurantAPI {
         .snapshots()
         .map(
           (snap) => snap.docs
-              .map((doc) => JsonMapper.deserialize<Restaurant>(doc.data())),
-        )
-        .shareReplay(maxSize: 1);
+              .map((doc) => JsonMapper.deserialize<Restaurant>(doc.data()))
+              .toList(),
+        );
   }
 
   Stream<Restaurant> _getSelectedRestaurant() {
