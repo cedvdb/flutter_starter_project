@@ -1,11 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dart_json_mapper/dart_json_mapper.dart' show jsonSerializable;
+import 'package:dart_json_mapper/dart_json_mapper.dart';
+import 'package:eureka_app/core/models/_entity.dart';
 
-@jsonSerializable
-class User {
-  String id;
-  Timestamp createdAt;
-  String restaurantSelected;
+@JsonSerializable()
+class User implements Entity {
+  final String id;
+  final DateTime createdAt;
+  final String restaurantSelected;
 
   User({this.id, this.createdAt, this.restaurantSelected});
+
+  @override
+  String toString() =>
+      'User(id: $id, createdAt: $createdAt, restaurantSelected: $restaurantSelected)';
 }
