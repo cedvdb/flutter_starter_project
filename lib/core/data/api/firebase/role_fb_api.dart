@@ -4,7 +4,7 @@ import '../api.dart';
 import '_collections.dart';
 import '_fb_api.dart';
 
-class RolesFbAPI extends FbAPI<UserRole> implements RoleAPI {
+class RoleFbAPI extends FbAPI<UserRole> implements RoleAPI {
   @override
   Stream<List<UserRole>> watchRestaurantRoles(String restaurantId) {
     return fs

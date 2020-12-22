@@ -1,26 +1,26 @@
 import 'package:eureka_app/core/models/restaurant.dart';
 
-class RestaurantsState {
+class RestaurantState {
   final List<Restaurant> restaurants;
   final Restaurant restaurantSelected;
 
   get hasRestaurant => restaurants.length > 0;
   get hasRestaurantSelected => restaurantSelected != null;
 
-  RestaurantsState({
+  RestaurantState({
     this.restaurants,
     this.restaurantSelected,
   });
 
-  RestaurantsState.initial()
+  RestaurantState.initial()
       : restaurants = [],
         restaurantSelected = null;
 
-  RestaurantsState copyWith({
+  RestaurantState copyWith({
     List<Restaurant> restaurants,
     Restaurant restaurantSelected,
   }) {
-    return RestaurantsState(
+    return RestaurantState(
       restaurants: restaurants ?? this.restaurants,
       restaurantSelected: restaurantSelected ?? this.restaurantSelected,
     );

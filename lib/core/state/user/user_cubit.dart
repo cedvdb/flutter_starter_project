@@ -2,13 +2,12 @@ import 'package:eureka_app/core/data/repositories/user_repository.dart';
 import 'package:eureka_app/core/models/user.dart';
 import 'package:eureka_app/core/state/user/user_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class UserCubit extends Cubit<UserState> {
-  final UserRepository _userRepository;
+  final UserRepository _userRepository = GetIt.I<UserRepository>();
 
-  UserCubit({UserRepository userRepository})
-      : _userRepository = userRepository,
-        super(UserUnset()) {
+  UserCubit() : super(UserUnset()) {
     _userRepository.user$.listen(_onUserChanged);
   }
 

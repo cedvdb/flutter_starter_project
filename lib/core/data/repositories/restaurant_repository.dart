@@ -4,27 +4,20 @@ import '_base_repository.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'user_repository.dart';
+import 'package:get_it/get_it.dart';
 
 class RestaurantRepository extends BaseRepository<Restaurant> {
-  final RestaurantAPI _restaurantAPI;
-  final AuthAPI _authAPI;
-  final RoleAPI _roleAPI;
-  final UserRepository _userRepository;
+  final RestaurantAPI _restaurantAPI = GetIt.I<RestaurantAPI>();
+  final AuthAPI _authAPI = GetIt.I<AuthAPI>();
+  final RoleAPI _roleAPI = GetIt.I<RoleAPI>();
+  final UserRepository _userRepository = GetIt.I<UserRepository>();
 
-  Stream<List<Restaurant>> restaurants$;
+  Stream<List<Restaurant>> userRestaurants$;
   Stream<Restaurant> restaurantSelected$;
 
-  RestaurantRepository({
-    RestaurantAPI api,
-    AuthAPI authAPI,
-    RoleAPI roleAPI,
-    UserRepository userRepository,
-  })  : _restaurantAPI = api,
-        _roleAPI = roleAPI,
-        _authAPI = authAPI,
-        _userRepository = userRepository,
-        super(api: api) {
-    restaurants$ = _watchUserRestaurants();
+  RestaurantRepository() {
+    super.api = _restaurantAPI;
+    userRestaurants$ = _watchUserRestaurants();
     restaurantSelected$ = _watchSelectedRestaurant();
   }
 

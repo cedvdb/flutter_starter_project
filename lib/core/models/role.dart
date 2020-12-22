@@ -1,6 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:eureka_app/core/models/_entity.dart';
 
+@jsonSerializable
 class UserRole implements Entity {
   final String id;
   final String role;

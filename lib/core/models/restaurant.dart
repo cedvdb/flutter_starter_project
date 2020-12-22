@@ -1,5 +1,7 @@
+import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:eureka_app/core/models/_entity.dart';
 
+@jsonSerializable
 class Restaurant extends Entity {
   final String id;
   final String name;

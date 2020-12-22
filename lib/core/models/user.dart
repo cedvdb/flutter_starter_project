@@ -1,7 +1,7 @@
 import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:eureka_app/core/models/_entity.dart';
 
-@JsonSerializable()
+@jsonSerializable
 class User implements Entity {
   final String id;
   final DateTime createdAt;

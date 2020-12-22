@@ -1,9 +1,10 @@
 import '../api/api.dart';
 
 abstract class BaseRepository<Type> {
-  final API _api;
-
-  BaseRepository({API api}) : _api = api;
+  API _api;
+  set api(API api) {
+    _api = api;
+  }
 
   Stream<Type> findOne(String id) {
     return _api.watchOne(id);

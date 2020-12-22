@@ -18,7 +18,7 @@ dependencies:
   flutty_theme_gradient:
     git: https://github.com/cedvdb/flutty_gradient_theme.git
   cloud_firestore: ^0.14.3+1
-  dart_json_mapper: ^1.7.2
+  dart_json_mapper: ^1.7.6
   easy_localization: ^2.3.3
   firebase_auth: 0.18.3+1
   firebase_core: 0.5.2+1

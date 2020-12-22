@@ -3,16 +3,15 @@ import 'package:eureka_app/core/models/_index.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '_base_repository.dart';
+import 'package:get_it/get_it.dart';
 
 class UserRepository extends BaseRepository<User> {
   Stream<User> user$;
-  final AuthAPI _authAPI;
-  final UserAPI _userAPI;
+  final AuthAPI _authAPI = GetIt.I<AuthAPI>();
+  final UserAPI _userAPI = GetIt.I<UserAPI>();
 
-  UserRepository({UserAPI userAPI, AuthAPI authAPI})
-      : _userAPI = userAPI,
-        _authAPI = authAPI,
-        super(api: userAPI) {
+  UserRepository() {
+    super.api = _userAPI;
     user$ = _watchUserStream();
   }
 
