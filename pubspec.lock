@@ -352,7 +352,7 @@ packages:
     source: hosted
     version: "0.12.1"
   flushbar:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flushbar
       url: "https://pub.dartlang.org"
@@ -398,13 +398,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.2"
-  flutter_guards:
-    dependency: transitive
-    description:
-      name: flutter_guards
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.1"
   flutter_inner_drawer:
     dependency: "direct main"
     description:
@@ -476,24 +469,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutty:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "149919c1b792ab74ec52dff667629887414ecbad"
-      url: "https://github.com/cedvdb/flutty.git"
-    source: git
-    version: "0.0.1"
-  flutty_theme_gradient:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "2a79e8da0268c5e4c5b8b51675866aa163dcb9fc"
-      url: "https://github.com/cedvdb/flutty_gradient_theme.git"
-    source: git
-    version: "0.0.1"
   font_awesome_flutter:
     dependency: "direct main"
     description:
@@ -690,6 +665,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.9.3"
+  package_info:
+    dependency: "direct main"
+    description:
+      name: package_info
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.3+2"
   path:
     dependency: transitive
     description:

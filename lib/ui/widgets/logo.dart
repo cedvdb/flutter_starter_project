@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Logo extends StatelessWidget {
-  double size = 20;
+  final double size;
 
-  Logo({this.size});
+  Logo({this.size = 20});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +14,7 @@ class Logo extends StatelessWidget {
         'assets/icons/logo.png',
         width: size,
         height: size,
+        fit: BoxFit.cover,
       ),
     );
   }

@@ -13,10 +13,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutty:
-    git: https://github.com/cedvdb/flutty.git
-  flutty_theme_gradient:
-    git: https://github.com/cedvdb/flutty_gradient_theme.git
   cloud_firestore: ^0.14.3+1
   dart_json_mapper: ^1.7.6
   easy_localization: ^2.3.3
@@ -34,6 +30,8 @@ dependencies:
   logger: ^0.9.4
   qr_flutter: ^3.2.0
   rxdart: ^0.24.1
+  package_info: ^0.4.3+2
+  flushbar: ^1.10.4
 
 dev_dependencies:
   flutter_test:
