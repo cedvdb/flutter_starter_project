@@ -27,13 +27,19 @@ class MyLoaderGuard extends StatelessWidget {
 class MyAuthGuard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AuthGuard(
-      authStream: context.select((AuthCubit auth) => auth
-          .map((authState) => authState.status == AuthStatus.authenticated)),
-      error: ErrorScreen(),
-      loading: LoadingScreen(),
-      signedIn: HomeScreen(),
-      signedOut: SignInScreen(),
+    return BlocBuilder<AuthCubit, AuthState>(
+      builder: (ctx, state) {
+        switch (state.status) {
+          case AuthStatus.authenticated:
+            return HomeScreen();
+          case AuthStatus.unauthenticated:
+            return SignInScreen();
+          case AuthStatus.unknown:
+            return LoadingScreen();
+          default:
+            return ErrorScreen();
+        }
+      },
     );
   }
 }

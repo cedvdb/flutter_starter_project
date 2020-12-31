@@ -10,18 +10,18 @@ import 'main.mapper.g.dart' show initializeJsonMapper;
 import 'app-root/my_screen_loader.dart';
 import 'app-root/my_bloc_providers.dart';
 
+Future preloadPromise = Future.wait([
+  AppInfo.init(),
+  Firebase.initializeApp().then((value) {
+    setupInjectors();
+  }),
+  Future.sync(() {
+    initializeJsonMapper();
+  })
+]).whenComplete(() => log.i('preloading completed'));
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
-  Future preloadPromise = Future.wait([
-    AppInfo.init(),
-    Firebase.initializeApp().then((value) {
-      setupInjectors();
-    }),
-    Future.sync(() {
-      initializeJsonMapper();
-    })
-  ]).then((value) => log.i('preloading completed'));
 
   runApp(MyApp(preloadPromise));
 }
@@ -29,7 +29,7 @@ void main() {
 class MyApp extends StatelessWidget {
   final Future preload;
 
-  MyApp(this.preload);
+  MyApp(this.preload) {}
 
   // This widget is the root of your application.
   @override
@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
     return MyLocalization(
       child: MyMaterialApp(
         child: MyLoaderGuard(
+          preload: preload,
           child: MyBlocProviders(
             child: MyAuthGuard(),
           ),

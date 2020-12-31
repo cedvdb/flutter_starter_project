@@ -25,4 +25,8 @@ class RestaurantState {
       restaurantSelected: restaurantSelected ?? this.restaurantSelected,
     );
   }
+
+  @override
+  String toString() =>
+      'RestaurantState(restaurants: $restaurants, restaurantSelected: $restaurantSelected)';
 }

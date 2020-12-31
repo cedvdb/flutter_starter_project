@@ -43,8 +43,11 @@ abstract class FbAPI<T extends Entity> extends API<T> {
     data.entries.forEach((entry) {
       var value = entry.value;
       // if the value is a google timestamp we convert it to a datetime
-      value = value.runtimeType is Timestamp ? value.toDate() : value;
-      map[entry.key] = entry.value;
+      if (value is Timestamp) {
+        value = value.toDate();
+      }
+      print('value $value type ${value.runtimeType}');
+      map[entry.key] = value;
     });
     return map;
   }

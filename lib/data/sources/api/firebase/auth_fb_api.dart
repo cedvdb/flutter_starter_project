@@ -1,7 +1,6 @@
 import '../api.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:rxdart/rxdart.dart';
 
 class AuthFbAPI extends AuthAPI {
   static FirebaseAuth _authFire = FirebaseAuth.instance;
@@ -10,16 +9,7 @@ class AuthFbAPI extends AuthAPI {
 
   @override
   watchAuthUser() {
-    return _authFire
-        .authStateChanges()
-        .doOnData((event) {
-          print(event.toString());
-        })
-        .map((user) => AuthUser(id: user?.uid))
-        .doOnData((event) {
-          print(event.toString());
-        });
-    // .startWith(AuthUser(id: _authFire.currentUser?.uid));
+    return _authFire.authStateChanges().map((user) => AuthUser(id: user?.uid));
   }
 
   @override

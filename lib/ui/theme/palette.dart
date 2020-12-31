@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Palette {
-  static const Color primary = Colors.lightBlue;
+  static const Color primary = Colors.teal;
 
   /// secondary color is used in conjunction with primary color, for example in gradients
-  static const Color secondary = Colors.lightGreen;
+  static const List<Color> gradientBackground = const [
+    Colors.teal,
+    Colors.lightGreen
+  ];
   static const Color accent = Colors.amber;
   static const Color warn = Colors.red;
   static const Color success = Colors.lightGreen;

@@ -20,18 +20,16 @@ class DrawerButtonNavList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DarkTheme(
-      child: Expanded(
-        child: Column(
-          children: [
-            for (int i = 0; i < links.length; i++)
-              NavButton(
-                icon: links[i].icon,
-                text: displayText ? links[i].text : null,
-                onTap: () => onNavPress(links[i].name),
-              ),
-          ],
-        ),
+    return Expanded(
+      child: Column(
+        children: [
+          for (int i = 0; i < links.length; i++)
+            NavButton(
+              icon: links[i].icon,
+              text: displayText ? links[i].text : null,
+              onTap: () => onNavPress(links[i].name),
+            ),
+        ],
       ),
     );
   }

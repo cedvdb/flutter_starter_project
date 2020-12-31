@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'bar_chart.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:eureka_app/data/state/_index.dart';
 
 class DashboardScreen extends StatelessWidget {
   @override
@@ -7,24 +9,13 @@ class DashboardScreen extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          // Card(
-          //   child: StreamBuilder<Restaurant>(
-          //     stream: restaurantAPI.restaurantSelected$,
-          //     builder:
-          //         (BuildContext context, AsyncSnapshot<Restaurant> snapshot) {
-          //       if (snapshot.hasError) {
-          //         print(snapshot.error);
-          //         return Text('Something went wrong');
-          //       }
-
-          //       if (snapshot.connectionState == ConnectionState.waiting) {
-          //         return Text("Loading");
-          //       }
-
-          //       return Text(snapshot.data.name);
-          //     },
-          //   ),
-          // ),
+          Card(
+            child: BlocBuilder<RestaurantCubit, RestaurantState>(
+              builder: (ctx, state) {
+                return Text(state.toString());
+              },
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
