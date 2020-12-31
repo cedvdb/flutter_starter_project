@@ -16,14 +16,14 @@ class HomeScreen extends StatelessWidget {
     return DrawerLayout(
       drawer: DrawerContent(
         links: nav.links,
-        onLogoutPress: context.read<AuthCubit>().signOut(),
+        onLogoutPress: () => context.read<AuthCubit>().signOut(),
         onNavPress: (String key) {
           nav.goTo(key);
           DrawerLayout.toggle();
         },
       ),
       appBar: LayoutAppBar(
-        title: AppInfo.appName,
+        title: AppInfo.title,
         onMenuTap: () => DrawerLayout.toggle(),
       ),
       body: PageView(

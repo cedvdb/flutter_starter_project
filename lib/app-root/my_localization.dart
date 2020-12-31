@@ -11,7 +11,7 @@ class MyLocalization extends StatelessWidget {
     return EasyLocalization(
       supportedLocales: [Locale('en'), Locale('fr')],
       path: 'assets/translations',
-      child: null,
+      child: child,
     );
   }
 }

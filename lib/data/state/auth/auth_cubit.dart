@@ -11,7 +11,8 @@ class AuthCubit extends Cubit<AuthState> {
   AuthRepository _authRepo = GetIt.I<AuthRepository>();
 
   AuthCubit() : super(AuthState.unknown()) {
-    _authUserSubscription = _authRepo.user$.listen(_onAuthStatusChanged);
+    _authUserSubscription =
+        _authRepo.user$.distinct().listen(_onAuthStatusChanged);
   }
 
   _onAuthStatusChanged(AuthUser authUser) {

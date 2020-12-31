@@ -1,11 +1,12 @@
 import 'package:eureka_app/data/sources/api/api.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:get_it/get_it.dart';
 
 class AuthRepository {
-  final AuthAPI _authAPI;
+  final AuthAPI _authAPI = GetIt.I.get<AuthAPI>();
   Stream<AuthUser> user$;
 
-  AuthRepository({AuthAPI api}) : _authAPI = api {
+  AuthRepository() {
     user$ = _authAPI.watchAuthUser().shareReplay(maxSize: 1);
   }
 

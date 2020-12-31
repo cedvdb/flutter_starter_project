@@ -6,10 +6,13 @@ import 'package:eureka_app/data/models/user.dart';
 class AuthUser {
   final String id;
   final bool authenticated;
-  AuthUser({this.id}) : authenticated = (id == null);
+  AuthUser({this.id}) : authenticated = (id != null);
+
+  @override
+  String toString() => 'AuthUser(id: $id, authenticated: $authenticated)';
 }
 
-enum AuthProvider { google, phone, facebook, twitter }
+enum AuthProvider { google }
 
 abstract class AuthAPI {
   Stream<AuthUser> watchAuthUser();

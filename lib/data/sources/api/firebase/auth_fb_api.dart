@@ -12,8 +12,14 @@ class AuthFbAPI extends AuthAPI {
   watchAuthUser() {
     return _authFire
         .authStateChanges()
+        .doOnData((event) {
+          print(event.toString());
+        })
         .map((user) => AuthUser(id: user?.uid))
-        .startWith(AuthUser(id: _authFire.currentUser?.uid));
+        .doOnData((event) {
+          print(event.toString());
+        });
+    // .startWith(AuthUser(id: _authFire.currentUser?.uid));
   }
 
   @override

@@ -9,7 +9,7 @@ class ErrorService {
   ErrorService();
 
   /// logs error to console, if context is provided will display snackbar
-  staticonError({
+  onError({
     Object e,
     String title = 'Error',
     String message,

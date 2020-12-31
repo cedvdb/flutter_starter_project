@@ -67,7 +67,7 @@ class TopLogo extends StatelessWidget {
             ),
           ),
           text: AccentuatedText(
-            text: AppInfo.appName,
+            text: AppInfo.title,
             size: 40,
           ),
         ),
