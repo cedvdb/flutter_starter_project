@@ -16,6 +16,7 @@ Future setupInjectors() {
   GetIt.I.registerSingleton<UserRepository>(UserRepository());
 
   GetIt.I.registerSingleton<RoleAPI>(RoleFbAPI());
+  GetIt.I.registerSingleton<RoleRepository>(RoleRepository());
 
   GetIt.I.registerSingleton<RestaurantAPI>(RestaurantFbAPI());
   GetIt.I.registerSingleton<RestaurantRepository>(RestaurantRepository());

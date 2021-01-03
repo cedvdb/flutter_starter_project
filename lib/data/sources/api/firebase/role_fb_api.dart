@@ -4,9 +4,9 @@ import '../api.dart';
 import '_collections.dart';
 import '_fb_api.dart';
 
-class RoleFbAPI extends FbAPI<UserRole> implements RoleAPI {
+class RoleFbAPI extends FbAPI<Role> implements RoleAPI {
   @override
-  Stream<List<UserRole>> watchRestaurantRoles(String restaurantId) {
+  Stream<List<Role>> watchRestaurantRoles(String restaurantId) {
     return fs
         .collection(Col.roles)
         .where('restaurant', isEqualTo: restaurantId)
@@ -15,7 +15,7 @@ class RoleFbAPI extends FbAPI<UserRole> implements RoleAPI {
   }
 
   @override
-  Stream<List<UserRole>> watchUserRoles(String userId) {
+  Stream<List<Role>> watchUserRoles(String userId) {
     print('getting user roles');
     return fs
         .collection(Col.roles)

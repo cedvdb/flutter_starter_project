@@ -1,16 +1,16 @@
-import 'package:eureka_app/data/sources/api/api.dart';
 import 'package:eureka_app/data/models/_index.dart';
-import '_base_repository.dart';
+import 'package:eureka_app/data/sources/api/api.dart';
+import 'package:get_it/get_it.dart';
 import 'package:rxdart/rxdart.dart';
 
+import '_base_repository.dart';
 import 'user_repository.dart';
-import 'package:get_it/get_it.dart';
+import 'role_repository.dart';
 
 class RestaurantRepository extends BaseRepository<Restaurant> {
   final RestaurantAPI _restaurantAPI = GetIt.I<RestaurantAPI>();
-  final AuthAPI _authAPI = GetIt.I<AuthAPI>();
-  final RoleAPI _roleAPI = GetIt.I<RoleAPI>();
-  final UserRepository _userRepository = GetIt.I<UserRepository>();
+  final RoleRepository _roleRepo = GetIt.I<RoleRepository>();
+  final UserRepository _userRepo = GetIt.I<UserRepository>();
 
   Stream<List<Restaurant>> userRestaurants$;
   Stream<Restaurant> restaurantSelected$;
@@ -22,7 +22,7 @@ class RestaurantRepository extends BaseRepository<Restaurant> {
   }
 
   Stream<List<Restaurant>> _watchUserRestaurants() {
-    return _watchUserRoles()
+    return _roleRepo.restaurantRoles$
         .where((event) => event != null)
         .map((roles) => roles.map((role) => role.restaurant))
         .switchMap((restaurantIds) =>
@@ -30,18 +30,7 @@ class RestaurantRepository extends BaseRepository<Restaurant> {
   }
 
   Stream<Restaurant> _watchSelectedRestaurant() {
-    return _userRepository.user$
-        .map((user) => user.restaurantSelected)
-        .distinct()
+    return _userRepo.selectedRestaurantId$
         .switchMap((id) => _restaurantAPI.watchOne(id));
-  }
-
-  Stream<List<UserRole>> _watchUserRoles() {
-    return _authAPI.watchAuthUser().switchMap((authUser) {
-      if (authUser == null) {
-        return Stream.value(null);
-      }
-      return _roleAPI.watchUserRoles(authUser.id);
-    });
   }
 }

@@ -4,10 +4,10 @@ import 'package:get_it/get_it.dart';
 
 class AuthRepository {
   final AuthAPI _authAPI = GetIt.I.get<AuthAPI>();
-  Stream<AuthUser> user$;
+  Stream<AuthUser> authUser$;
 
   AuthRepository() {
-    user$ = _authAPI.watchAuthUser().shareReplay(maxSize: 1);
+    authUser$ = _authAPI.watchAuthUser().shareReplay(maxSize: 1);
   }
 
   signIn(AuthProvider provider) {

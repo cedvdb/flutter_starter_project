@@ -30,9 +30,9 @@ abstract class API<T> {
 
 abstract class UserAPI extends API<User> {}
 
-abstract class RoleAPI extends API<UserRole> {
-  Stream<List<UserRole>> watchUserRoles(String userId);
-  Stream<List<UserRole>> watchRestaurantRoles(String restaurantId);
+abstract class RoleAPI extends API<Role> {
+  Stream<List<Role>> watchUserRoles(String userId);
+  Stream<List<Role>> watchRestaurantRoles(String restaurantId);
 }
 
 abstract class RestaurantAPI extends API<Restaurant> {

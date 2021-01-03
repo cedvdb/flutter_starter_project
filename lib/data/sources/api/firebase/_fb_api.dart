@@ -3,6 +3,7 @@ import 'package:dart_json_mapper/dart_json_mapper.dart';
 import 'package:eureka_app/data/models/_entity.dart';
 
 import '../api.dart';
+import 'package:rxdart/rxdart.dart';
 
 final fs = FirebaseFirestore.instance;
 
@@ -13,7 +14,12 @@ abstract class FbAPI<T extends Entity> extends API<T> {
 
   @override
   Stream<T> watchOne(String id) {
-    return fs.collection(collection).doc(id).snapshots().map(docToModel);
+    return fs
+        .collection(collection)
+        .doc(id)
+        .snapshots()
+        .map(docToModel)
+        .shareReplay(maxSize: 1);
   }
 
   @override
@@ -46,7 +52,7 @@ abstract class FbAPI<T extends Entity> extends API<T> {
       if (value is Timestamp) {
         value = value.toDate();
       }
-      print('value $value type ${value.runtimeType}');
+      // print('value $value type ${value.runtimeType}');
       map[entry.key] = value;
     });
     return map;

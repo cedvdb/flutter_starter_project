@@ -4,19 +4,26 @@ import 'package:rxdart/rxdart.dart';
 
 import '_base_repository.dart';
 import 'package:get_it/get_it.dart';
+import 'auth_repository.dart';
 
 class UserRepository extends BaseRepository<User> {
   Stream<User> user$;
-  final AuthAPI _authAPI = GetIt.I<AuthAPI>();
+  Stream<String> userId$;
+  Stream<String> selectedRestaurantId$;
+
+  final AuthRepository _authRepo = GetIt.I<AuthRepository>();
   final UserAPI _userAPI = GetIt.I<UserAPI>();
 
   UserRepository() {
     super.api = _userAPI;
     user$ = _watchUserStream();
+    userId$ = user$.map((user) => user.id).distinct();
+    selectedRestaurantId$ =
+        user$.map((user) => user.restaurantSelected).distinct();
   }
 
   _watchUserStream() {
-    return _authAPI.watchAuthUser().switchMap((authUser) {
+    return _authRepo.authUser$.switchMap((authUser) {
       if (authUser == null) {
         return Stream.value(null);
       }
