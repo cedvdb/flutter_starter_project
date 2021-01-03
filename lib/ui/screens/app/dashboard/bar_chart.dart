@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class AppBarChart extends StatelessWidget {
   final double width = 7;
-  final Color leftBarColor = const Color(0xff53fdd7);
-  final Color rightBarColor = const Color(0xffff5182);
+  final Color leftBarColor = Colors.white;
+  final Color rightBarColor = Colors.amber;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +28,7 @@ class AppBarChart extends StatelessWidget {
     return BarChart(
       BarChartData(
         barGroups: items,
+        borderData: FlBorderData(show: false),
       ),
     );
   }

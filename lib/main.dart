@@ -29,7 +29,7 @@ void main() {
 class MyApp extends StatelessWidget {
   final Future preload;
 
-  MyApp(this.preload) {}
+  MyApp(this.preload);
 
   // This widget is the root of your application.
   @override
