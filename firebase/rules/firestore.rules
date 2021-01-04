@@ -1,0 +1,82 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+
+    function authenticated() {
+      return request.auth != null;
+    }
+
+    function getRoles(restaurantId) {
+      return get(/databases/$(database)/documents/roles/$(restaurantId)).data;
+    }
+
+    // else checking for the uid gives an error
+    function userRole(roles) {
+      return request.auth.uid in roles ? roles[request.auth.uid] : null;
+    }
+
+    function isOwner(roles) {
+      let userRole = userRole(roles);
+      return userRole == 'owner';
+    }
+
+    function isManager(roles) {
+      let userRole = userRole(roles);
+      return userRole == 'manager' || userRole == 'owner';
+    }
+
+    function isEmployee(roles) {
+      let userRole = userRole(roles);
+      return userRole == 'employee' || userRole == 'manager' || userRole == 'owner';
+    }
+
+    match /roles/{role} {
+      allow read: if authenticated() && isEmployee(resource.data);
+      allow write: if authenticated() && isOwner(resource.data);
+    }
+
+    match /restaurants/{restaurantId} {
+      allow get: if true;
+      allow list: if isEmployee(getRoles(resource.id));
+      allow create: if authenticated() && request.resource.data.createdBy == request.auth.uid;
+      allow update: if authenticated() && isManager(getRoles(resource.id));
+    }
+
+    match /analytics/{analytic} {
+      allow get: if isEmployee(getRoles(resource.id));
+    }
+
+    match /menus/{menu} {
+      allow get: if true;
+      allow write: if isManager(getRoles(resource.id));
+    }
+
+    match /users/{userId} {
+      allow read, write: if authenticated() && request.auth.uid == userId;
+    }
+
+    match /orders/{order} {
+      allow get: if true;
+      allow list: if authenticated() && isEmployee(getRoles(resource.data.restaurant));
+      allow create: if true;
+      allow update: if authenticated() && isEmployee(getRoles(resource.data.restaurant));
+    }
+
+    match /visits/{visit} {
+      allow create: if true;
+      allow read: if authenticated() && isEmployee(getRoles(resource.data.restaurant));
+    }
+
+    match /visits-counter/{counter} {
+      allow get: if isEmployee(getRoles(resource.id));
+    }
+
+    match /invitations/{invitation} {
+      allow get: if true;
+      allow create: if isManager(getRoles(request.resource.data.restaurant));
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(["status", "userId"]);
+    }
+
+  }
+}

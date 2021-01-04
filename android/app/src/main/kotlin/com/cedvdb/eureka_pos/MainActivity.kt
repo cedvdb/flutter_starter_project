@@ -1,4 +1,4 @@
-package com.cedvdb.eureka_app2
+package com.cedvdb.eureka_pos
 
 import io.flutter.embedding.android.FlutterActivity
 

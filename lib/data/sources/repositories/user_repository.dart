@@ -5,6 +5,7 @@ import 'package:rxdart/rxdart.dart';
 import '_base_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'auth_repository.dart';
+import 'dart:async';
 
 class UserRepository extends BaseRepository<User> {
   Stream<User> user$;
@@ -27,7 +28,17 @@ class UserRepository extends BaseRepository<User> {
       if (authUser == null) {
         return Stream.value(null);
       }
-      return _userAPI.watchOne(authUser.id);
+      return _userAPI
+          .watchOne(authUser.id)
+          .doOnData((user) => _createUserIfNotExist(user))
+          .where((user) => user != null);
     });
+  }
+
+  _createUserIfNotExist(User user) {
+    if (user == null) {
+      final authUser = _authRepo.authUser;
+      _userAPI.create(User(id: authUser.id, createdAt: DateTime.now()));
+    }
   }
 }

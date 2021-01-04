@@ -59,7 +59,10 @@ abstract class FbAPI<T extends Entity> extends API<T> {
   }
 
   T docToModel(DocumentSnapshot doc) {
-    return JsonMapper.deserialize<T>(docToMap(doc));
+    if (doc.exists)
+      return JsonMapper.deserialize<T>(docToMap(doc));
+    else
+      return null;
   }
 
   List<T> snapshotToModelList(QuerySnapshot snap) {
