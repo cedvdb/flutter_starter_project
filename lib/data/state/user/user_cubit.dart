@@ -7,18 +7,18 @@ import 'package:get_it/get_it.dart';
 class UserCubit extends Cubit<UserState> {
   final UserRepository _userRepository = GetIt.I<UserRepository>();
 
-  UserCubit() : super(UserUnset()) {
+  UserCubit() : super(UserState.unset()) {
     _userRepository.user$.listen(_onUserChanged);
   }
 
   void _onUserChanged(User user) {
-    emit(UserSet(user: user));
+    emit(UserState(user: user));
   }
 
-  void setSelectedRestaurant(String userId, String restaurantId) {
+  void setSelectedRestaurant(String restaurantId) {
     _userRepository.update(
       User(
-        id: userId,
+        id: state.user.id,
         restaurantSelected: restaurantId,
       ),
     );

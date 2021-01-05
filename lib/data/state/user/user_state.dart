@@ -1,13 +1,16 @@
 import 'package:eureka_app/data/models/user.dart';
 
-class UserState {}
+enum Status { set, unset }
 
-class UserSet extends UserState {
+class UserState {
   final User user;
-  UserSet({this.user});
+  final Status status;
+  UserState({this.user}) : status = user != null ? Status.set : Status.unset;
+
+  UserState.unset()
+      : user = null,
+        status = Status.unset;
 
   @override
-  String toString() => 'UserSet(user: $user)';
+  String toString() => 'UserState(user: $user, status: $status)';
 }
-
-class UserUnset extends UserState {}

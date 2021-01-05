@@ -28,17 +28,7 @@ class UserRepository extends BaseRepository<User> {
       if (authUser == null) {
         return Stream.value(null);
       }
-      return _userAPI
-          .watchOne(authUser.id)
-          .doOnData((user) => _createUserIfNotExist(user))
-          .where((user) => user != null);
+      return _userAPI.watchOne(authUser.id).where((user) => user != null);
     });
-  }
-
-  _createUserIfNotExist(User user) {
-    if (user == null) {
-      final authUser = _authRepo.authUser;
-      _userAPI.create(User(id: authUser.id, createdAt: DateTime.now()));
-    }
   }
 }

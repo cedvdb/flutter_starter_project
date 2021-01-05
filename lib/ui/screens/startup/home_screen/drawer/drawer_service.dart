@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
-
+import 'package:eureka_app/app-root/routes.dart';
 import 'drawer_link.dart';
+import 'package:eureka_app/utils/logger.dart';
 
 class DrawerService {
-  final PageController controller = PageController(keepPage: false);
-  final List<DrawerLink> links;
+  PageController controller = PageController();
+  final List<DrawerLink> links = drawerLinks;
+  int _lastIndex = 0;
 
-  DrawerService({this.links});
+  DrawerService() {
+    log.d('creating');
+  }
+
+  init() {
+    controller = PageController(initialPage: _lastIndex);
+  }
 
   goTo(String name) {
     final navIndex = links.indexWhere((info) => info.name == name);
@@ -15,6 +23,7 @@ class DrawerService {
       duration: Duration(milliseconds: 300),
       curve: Curves.ease,
     );
+    _lastIndex = navIndex;
   }
 
   List<Widget> getPages(BuildContext context) {

@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
-import 'bar_chart.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:eureka_app/data/state/_index.dart';
 import 'package:eureka_app/ui/widgets/gradient_container.dart';
+import 'package:flutter/material.dart';
+
+import 'bar_chart.dart';
 
 class DashboardScreen extends StatelessWidget {
   @override
