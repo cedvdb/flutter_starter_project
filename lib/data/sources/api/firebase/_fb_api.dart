@@ -23,8 +23,12 @@ abstract class FbAPI<T extends Entity> extends API<T> {
   }
 
   @override
-  update(T t) {
-    return fs.collection(collection).doc(t.id).update(JsonMapper.serialize(t));
+  update(T t) async {
+    final asMap = JsonMapper.toMap(t);
+    final doc = fs.collection(collection).doc(t.id);
+    await doc.update(asMap);
+    final updatedDoc = await doc.get(GetOptions(source: Source.cache));
+    return docToModel(updatedDoc);
   }
 
   @override

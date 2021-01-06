@@ -17,12 +17,15 @@ class MyBlocProviders extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthCubit>(
+          lazy: false,
           create: (BuildContext context) => AuthCubit(),
         ),
         BlocProvider<UserCubit>(
+          lazy: false,
           create: (BuildContext context) => UserCubit(),
         ),
         BlocProvider<RestaurantCubit>(
+          lazy: false,
           create: (BuildContext context) => RestaurantCubit(),
         ),
       ],
