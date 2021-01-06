@@ -36,9 +36,11 @@ class DrawerLayout extends StatelessWidget {
           color: Colors.transparent,
         ),
         leftChild: drawer,
-        scaffold: Scaffold(
-          appBar: appBar,
-          body: body,
+        scaffold: GradientContainer(
+          child: Scaffold(
+            appBar: appBar,
+            body: body,
+          ),
         ),
       ),
     );

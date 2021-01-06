@@ -6,16 +6,26 @@ import 'package:get_it/get_it.dart';
 import 'package:rxdart/rxdart.dart';
 
 class RoleRepository extends BaseRepository<Role> {
-  RoleAPI _roleAPI = GetIt.I.get<RoleAPI>();
-  UserRepository _userRepo = GetIt.I.get<UserRepository>();
-  Stream<List<Role>> userRoles$;
-  Stream<List<Role>> restaurantRoles$;
+  final RoleAPI _roleAPI = GetIt.I.get<RoleAPI>();
+  final UserRepository _userRepo = GetIt.I.get<UserRepository>();
+  final BehaviorSubject<List<Role>> _userRoles$ = BehaviorSubject();
+  final BehaviorSubject<List<Role>> _restaurantRoles$ = BehaviorSubject();
+  Stream<List<Role>> get userRoles$ => _userRoles$.stream;
+  Stream<List<Role>> get restaurantRoles$ => _restaurantRoles$.stream;
 
   RoleRepository() {
     super.api = _roleAPI;
-    userRoles$ = _userRepo.userId$
+    _userRoles$.addStream(_watchUserRoles());
+    _restaurantRoles$.addStream(_watchRestaurantRoles());
+  }
+
+  _watchUserRoles() {
+    return _userRepo.userId$
         .switchMap((userId) => _roleAPI.watchUserRoles(userId));
-    restaurantRoles$ = _userRepo.selectedRestaurantId$.switchMap(
+  }
+
+  _watchRestaurantRoles() {
+    return _userRepo.selectedRestaurantId$.switchMap(
         (restaurantId) => _roleAPI.watchRestaurantRoles(restaurantId));
   }
 }

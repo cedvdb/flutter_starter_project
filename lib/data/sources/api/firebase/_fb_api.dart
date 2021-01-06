@@ -28,8 +28,10 @@ abstract class FbAPI<T extends Entity> extends API<T> {
   }
 
   @override
-  Future<T> create(T t) {
-    return fs.collection(collection).doc(t.id).set(JsonMapper.serialize(t));
+  Future<T> create(T t) async {
+    final asMap = JsonMapper.toMap(t);
+    final doc = await fs.collection(collection).add(asMap);
+    return t.copyWith(id: doc.id);
   }
 
   @override

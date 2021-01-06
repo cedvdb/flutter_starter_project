@@ -12,13 +12,17 @@ class RestaurantRepository extends BaseRepository<Restaurant> {
   final RoleRepository _roleRepo = GetIt.I<RoleRepository>();
   final UserRepository _userRepo = GetIt.I<UserRepository>();
 
-  Stream<List<Restaurant>> userRestaurants$;
-  Stream<Restaurant> restaurantSelected$;
+  final BehaviorSubject<List<Restaurant>> _userRestaurants$ = BehaviorSubject();
+  final BehaviorSubject<Restaurant> _restaurantSelected$ = BehaviorSubject();
+
+  Stream<List<Restaurant>> get userRestaurants$ => _userRestaurants$.stream;
+  Stream<Restaurant> get restaurantSelected$ => _restaurantSelected$.stream;
+  Restaurant get restaurantSelected => _restaurantSelected$.value;
 
   RestaurantRepository() {
     super.api = _restaurantAPI;
-    userRestaurants$ = _watchUserRestaurants();
-    restaurantSelected$ = _watchSelectedRestaurant();
+    _userRestaurants$.addStream(_watchUserRestaurants());
+    _restaurantSelected$.addStream(_watchSelectedRestaurant());
   }
 
   Stream<List<Restaurant>> _watchUserRestaurants() {

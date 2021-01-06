@@ -6,11 +6,17 @@ import 'package:easy_localization/easy_localization.dart';
 class MyMaterialApp extends StatelessWidget {
   final Widget child;
   final theme = ThemeData(
+    // brightness: Brightness.dark,
     primarySwatch: Palette.primary,
     accentColor: Palette.accent,
     cardColor: Palette.backgroundCard,
     backgroundColor: Palette.background,
     visualDensity: VisualDensity.adaptivePlatformDensity,
+    appBarTheme: AppBarTheme(
+      color: Palette.appBar,
+      // shadowColor: Colors.transparent,
+    ),
+    scaffoldBackgroundColor: Palette.background,
   );
 
   MyMaterialApp({this.child});

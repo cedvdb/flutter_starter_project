@@ -7,49 +7,49 @@ service cloud.firestore {
       return request.auth != null;
     }
 
-    function getRoles(restaurantId) {
-      return get(/databases/$(database)/documents/roles/$(restaurantId)).data;
+    function onlyUpdated(properties) {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(properties);
     }
 
-    // else checking for the uid gives an error
-    function userRole(roles) {
-      return request.auth.uid in roles ? roles[request.auth.uid] : null;
+    function getRole(restaurantId) {
+      let userId = request.auth.uid;
+      return get(/databases/$(database)/documents/roles/$(userId + ':' + restaurantId)).data;
     }
 
-    function isOwner(roles) {
-      let userRole = userRole(roles);
-      return userRole == 'owner';
+    function isOwner(restaurantId) {
+      let userRole = getRole(restaurantId);
+      return userRole != null && userRole.role == 'owner';
     }
 
-    function isManager(roles) {
-      let userRole = userRole(roles);
-      return userRole == 'manager' || userRole == 'owner';
+    function isManager(restaurantId) {
+      let userRole = getRole(restaurantId);
+      return userRole != null && (userRole.role == 'owner' || userRole.role == 'manager' );
     }
 
-    function isEmployee(roles) {
-      let userRole = userRole(roles);
-      return userRole == 'employee' || userRole == 'manager' || userRole == 'owner';
+    function isEmployee(restaurantId) {
+      let userRole = getRole(restaurantId);
+      return userRole != null && (userRole == 'employee' || userRole == 'manager' || userRole == 'owner');
     }
 
     match /roles/{role} {
-      allow read: if authenticated() && isEmployee(resource.data);
-      allow write: if authenticated() && isOwner(resource.data);
+      allow list: if authenticated() && (resource.data.user == request.auth.uid || isManager(resource.data.restaurant));
+      allow write: if authenticated() && isOwner(resource.data.restaurant);
     }
 
     match /restaurants/{restaurantId} {
       allow get: if true;
-      allow list: if isEmployee(getRoles(resource.id));
+      allow list: if isEmployee(resource.id);
       allow create: if authenticated() && request.resource.data.createdBy == request.auth.uid;
-      allow update: if authenticated() && isManager(getRoles(resource.id));
+      allow update: if authenticated() && isManager(resource.id);
     }
 
     match /analytics/{analytic} {
-      allow get: if isEmployee(getRoles(resource.id));
+      allow get: if isEmployee(resource.data.restaurant);
     }
 
     match /menus/{menu} {
       allow get: if true;
-      allow write: if isManager(getRoles(resource.id));
+      allow write: if isManager(resource.data.restaurant);
     }
 
     match /users/{userId} {
@@ -58,24 +58,24 @@ service cloud.firestore {
 
     match /orders/{order} {
       allow get: if true;
-      allow list: if authenticated() && isEmployee(getRoles(resource.data.restaurant));
+      allow list: if authenticated() && isEmployee(resource.data.restaurant);
       allow create: if true;
-      allow update: if authenticated() && isEmployee(getRoles(resource.data.restaurant));
+      allow update: if authenticated() && isEmployee(resource.data.restaurant) && onlyUpdated(["status"]);
     }
 
     match /visits/{visit} {
       allow create: if true;
-      allow read: if authenticated() && isEmployee(getRoles(resource.data.restaurant));
+      allow read: if authenticated() && isEmployee(resource.data.restaurant);
     }
 
     match /visits-counter/{counter} {
-      allow get: if isEmployee(getRoles(resource.id));
+      allow get: if isEmployee(resource.data.restaurant);
     }
 
     match /invitations/{invitation} {
       allow get: if true;
-      allow create: if isManager(getRoles(request.resource.data.restaurant));
-      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(["status", "userId"]);
+      allow create: if isManager(request.resource.data.restaurant);
+      allow update: if onlyUpdated(["status", "userId"]);
     }
 
   }

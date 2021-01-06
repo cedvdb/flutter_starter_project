@@ -5,7 +5,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:eureka_app/utils/logger.dart';
 
 class AuthFbAPI extends AuthAPI {
-  static FirebaseAuth _authFire = FirebaseAuth.instance;
+  FirebaseAuth get _authFire => FirebaseAuth.instance;
 
   AuthFbAPI();
 

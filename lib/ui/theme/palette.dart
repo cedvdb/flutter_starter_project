@@ -12,7 +12,7 @@ class Palette {
   static const Color warn = Colors.red;
   static const Color success = Colors.lightGreen;
   static const Color info = Colors.lightBlue;
-  static const Color background = const Color(0xFFECEEEE);
+  static const Color background = Color(0xFFECEEEE);
   static const Color backgroundCard = Colors.white;
 
   /// colors of text and icons, going from most important to less
@@ -26,4 +26,6 @@ class Palette {
     Colors.white70,
     Colors.white54,
   ];
+
+  static const Color appBar = Palette.primary;
 }

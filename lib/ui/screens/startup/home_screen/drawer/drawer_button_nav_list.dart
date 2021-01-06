@@ -1,4 +1,3 @@
-import 'package:eureka_app/ui/widgets/dark_theme.dart';
 import 'package:flutter/material.dart';
 import 'drawer_button.dart';
 import 'drawer_link.dart';

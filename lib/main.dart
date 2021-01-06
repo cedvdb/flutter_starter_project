@@ -12,9 +12,7 @@ import 'app-root/my_bloc_providers.dart';
 
 Future preloadPromise = Future.wait([
   AppInfo.init(),
-  Firebase.initializeApp().then((value) {
-    setupInjectors();
-  }),
+  Firebase.initializeApp().then((_) => setupInjectors()),
   Future.sync(() {
     initializeJsonMapper();
   })

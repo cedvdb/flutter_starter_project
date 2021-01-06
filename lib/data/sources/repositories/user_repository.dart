@@ -8,22 +8,22 @@ import 'auth_repository.dart';
 import 'dart:async';
 
 class UserRepository extends BaseRepository<User> {
-  Stream<User> user$;
-  Stream<String> userId$;
-  Stream<String> selectedRestaurantId$;
-
   final AuthRepository _authRepo = GetIt.I<AuthRepository>();
   final UserAPI _userAPI = GetIt.I<UserAPI>();
+  final BehaviorSubject<User> _user$ = BehaviorSubject<User>();
+
+  Stream<User> get user$ => _user$.stream;
+  Stream<String> get userId$ => user$.map((user) => user.id).distinct();
+  Stream<String> get selectedRestaurantId$ =>
+      user$.map((user) => user.restaurantSelected).distinct();
+  User get user => _user$.value;
 
   UserRepository() {
     super.api = _userAPI;
-    user$ = _watchUserStream();
-    userId$ = user$.map((user) => user.id).distinct();
-    selectedRestaurantId$ =
-        user$.map((user) => user.restaurantSelected).distinct();
+    _user$.addStream(_watchUserStream());
   }
 
-  _watchUserStream() {
+  Stream<User> _watchUserStream() {
     return _authRepo.authUser$.switchMap((authUser) {
       if (authUser == null) {
         return Stream.value(null);
