@@ -1,10 +1,12 @@
 
 
-export interface Roles {
-  [userId: string]: Role;
+export interface Role {
+  user: string;
+  restaurant: string;
+  role: RoleName;
 }
 
-export enum Role {
+export enum RoleName {
   OWNER = 'owner',
   MANAGER = 'manager',
   EMPLOYEE = 'employee'
